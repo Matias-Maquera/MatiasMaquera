@@ -1,56 +1,47 @@
+<app-header></app-header>
 <header>
     <div class="menu container"></div>
     <input type="checkbox" id="menu">
     <label for="menu">
         <img src="" class="menu-icono" alt="">
-    </label>
-        <div class="h1">
+    </label> 
+    <div>
+        <form class="Cabeza">
             <h1>Segundo Parcial</h1>
-            <form action="table">
-                <label>Nombres</label><br>
-                <input type="text" ><br>
-                <label>Abrev</label><br>
-                <input type="text"><br>
-                <input type="button" value="Enviar"><br>
-                
-            </form>
-          <table>
-            <tr>
-                <th>posicion</th>
-                <th>Sistema</th>
-                <th>Porsentaje</th>
-                <th>sdcsdc</th>
-                <th>sdcsdc</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Si</td>
-                <td>Por</td>
-                <td>sd</td>
-                <td>scdd</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Si</td>
-                <td>Por</td>
-                <td>sd</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Si</td>
-                <td>Por</td>
-                <td>sd</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Si</td>
-                <td>Por</td>
-                <td>sd</td>
-            </tr>
-          </table>
-        </div>
+            <label>Nombres</label><br>
+            <input type="text" [(ngModel)]="name" name="name"><br>
+            {{name}}
+            <label>Cargos:</label><br>
+            <input type="text" [(ngModel)]="abrev" name="abrev"><br>
+            {{abrev}}
+            <input type="button" value="Enviar" (click)="save()">
+        </form>
+    </div>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombre</th>
+                    <th>Cargo</th>
+                    <th>Solucion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of dataSource; index as nro">
+                    <th>{{nro + 1}}</th>
+                    <th>{{row.name}}</th>
+                    <th>{{row.abrev}}</th>
+                        <th>
+                        <button (click)="actualizar(row.id)">Editar</button>
+                        <button (click)="borrar(row.id)">Eliminar</button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </header>
-
+<main>
 <section class="porfolios container">
     <h2>Laboratorio 1</h2>
     <div class="porfolio">
@@ -396,6 +387,7 @@ function sortContactsBy(property) {
         <img src="./assets/images/Imagen2.png" alt="" data-aos="fade-left">
     </div>
 </section>
+</main>
 <footer data-aos="zoom-in" data-aos-duration="2000">
     <div clas="footer-aboutt" >
         <h1>Unv. Matias Melin Maquera Orcko</h1>
